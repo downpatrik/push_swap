@@ -6,7 +6,7 @@
 #    By: wvenita <wvenita@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/07 12:47:46 by wvenita           #+#    #+#              #
-#    Updated: 2019/04/16 23:26:06 by wvenita          ###   ########.fr        #
+#    Updated: 2020/03/16 20:17:47 by wvenita          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,14 +87,14 @@ OBJ = \
 all: $(NAME)
 
 %.o: %.c
-	$(CC) $(FLAGS) -c -o $@ $<
+	@$(CC) $(FLAGS) -c -o $@ $<
 
 $(NAME): $(OBJ)
-	ar rc $(NAME) $(OBJ)
+	@ar rc $(NAME) $(OBJ)
 	ranlib $(NAME)
 
 clean:
-	/bin/rm -f *.o
+	@/bin/rm -f *.o
 
 fclean: clean
 	/bin/rm -f $(NAME)

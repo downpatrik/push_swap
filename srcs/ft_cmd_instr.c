@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cmd_apply.c                                     :+:      :+:    :+:   */
+/*   ft_cmd_instr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wvenita <wvenita@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: wvenita <wvenita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 23:46:01 by wvenita           #+#    #+#             */
-/*   Updated: 2020/03/15 12:41:14 by wvenita          ###   ########.fr       */
+/*   Updated: 2020/03/16 20:08:33 by wvenita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-int ft_cmd_instr_s(t_stack **stack)
+int	ft_cmd_instr_s(t_stack **stack)
 {
-	int tmp;
+	int	tmp;
 
 	if (*stack && (*stack)->next)
 	{
@@ -25,7 +25,7 @@ int ft_cmd_instr_s(t_stack **stack)
 	return (-1);
 }
 
-int ft_cmd_instr_p(t_stack **from, t_stack **to)
+int	ft_cmd_instr_p(t_stack **from, t_stack **to)
 {
 	if (*from)
 	{
@@ -35,7 +35,7 @@ int ft_cmd_instr_p(t_stack **from, t_stack **to)
 	return (-1);
 }
 
-int ft_cmd_instr_r(t_stack **stack)
+int	ft_cmd_instr_r(t_stack **stack)
 {
 	if (*stack && (*stack)->next)
 	{
@@ -45,7 +45,7 @@ int ft_cmd_instr_r(t_stack **stack)
 	return (-1);
 }
 
-int ft_cmd_instr_rr(t_stack **stack)
+int	ft_cmd_instr_rr(t_stack **stack)
 {
 	if (*stack && (*stack)->next)
 	{

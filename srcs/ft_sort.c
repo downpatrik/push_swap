@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sort.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wvenita <wvenita@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: wvenita <wvenita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 23:59:33 by wvenita           #+#    #+#             */
-/*   Updated: 2020/03/15 22:51:07 by wvenita          ###   ########.fr       */
+/*   Updated: 2020/03/16 22:01:57 by wvenita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-void ft_st_a_norm(t_stacks *stacks)
+void	ft_st_a_norm(t_stacks *stacks)
 {
-	int instr;
+	int	instr;
 
 	ft_set_index(stacks->a);
 	stacks->max_sort = ft_get_max_sort(stacks->a);
@@ -25,9 +25,9 @@ void ft_st_a_norm(t_stacks *stacks)
 	ft_cmd_instr_cnt(instr > 0 ? "ra" : "rra", instr, stacks);
 }
 
-void ft_st_a_to_b(t_stacks *stacks)
+void	ft_st_a_to_b(t_stacks *stacks)
 {
-	t_stack *a;
+	t_stack	*a;
 
 	a = stacks->a;
 	while (a && a->i != stacks->max_sort->i)
@@ -37,11 +37,11 @@ void ft_st_a_to_b(t_stacks *stacks)
 	}
 }
 
-void ft_st_b_to_a(t_stacks *stacks)
+void	ft_st_b_to_a(t_stacks *stacks)
 {
-	t_stack *b;
-	int min_instr;
-	int instr;
+	t_stack	*b;
+	int		min_instr;
+	int		instr;
 
 	while (stacks->b)
 	{
@@ -66,32 +66,31 @@ void ft_st_b_to_a(t_stacks *stacks)
 	}
 }
 
-void ft_list_b_to_a(t_stacks *stacks)
+void	ft_list_b_to_a(t_stacks *stcks)
 {
-	stacks->tmp_a = ft_abs(stacks->opt_a);
-	stacks->tmp_b = ft_abs(stacks->opt_b);
-	while (((stacks->opt_a > 0 && stacks->opt_b > 0) || (stacks->opt_a < 0 &&
-														 stacks->opt_b < 0)) &&
-		   stacks->tmp_a && stacks->tmp_b &&
-		   stacks->opt_pl != 1)
+	stcks->tmp_a = ft_abs(stcks->opt_a);
+	stcks->tmp_b = ft_abs(stcks->opt_b);
+	while (((stcks->opt_a > 0 && stcks->opt_b > 0) ||
+			(stcks->opt_a < 0 && stcks->opt_b < 0)) &&
+			stcks->tmp_a && stcks->tmp_b && stcks->opt_pl != 1)
 	{
-		ft_cmd_instr_cnt(stacks->opt_b > 0 ? "rr" : "rrr", 1, stacks);
-		stacks->tmp_a--;
-		stacks->tmp_b--;
+		ft_cmd_instr_cnt(stcks->opt_b > 0 ? "rr" : "rrr", 1, stcks);
+		stcks->tmp_a--;
+		stcks->tmp_b--;
 	}
-	ft_cmd_instr_cnt(stacks->opt_b > 0 ? "rb" : "rrb", stacks->tmp_b, stacks);
-	if (stacks->opt_pl != -1)
-		ft_cmd_instr_cnt(stacks->opt_a > 0 ? "ra" : "rra", stacks->tmp_a, stacks);
-	ft_cmd_instr_cnt("pa", 1, stacks);
-	if (stacks->opt_pl == -1)
-		ft_cmd_instr_cnt("ra", 1, stacks);
+	ft_cmd_instr_cnt(stcks->opt_b > 0 ? "rb" : "rrb", stcks->tmp_b, stcks);
+	if (stcks->opt_pl != -1)
+		ft_cmd_instr_cnt(stcks->opt_a > 0 ? "ra" : "rra", stcks->tmp_a, stcks);
+	ft_cmd_instr_cnt("pa", 1, stcks);
+	if (stcks->opt_pl == -1)
+		ft_cmd_instr_cnt("ra", 1, stcks);
 }
 
-void ft_st_a_min_to_top(t_stacks *stacks)
+void	ft_st_a_min_to_top(t_stacks *stacks)
 {
-	t_stack *a;
-	t_stack *min_list;
-	int iter_to_up;
+	t_stack	*a;
+	t_stack	*min_list;
+	int		iter_to_up;
 
 	a = stacks->a;
 	min_list = a;

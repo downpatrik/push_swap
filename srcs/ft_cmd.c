@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cmd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wvenita <wvenita@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: wvenita <wvenita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/01 23:05:15 by wvenita           #+#    #+#             */
-/*   Updated: 2020/03/15 22:51:23 by wvenita          ###   ########.fr       */
+/*   Updated: 2020/03/16 20:07:48 by wvenita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-int ft_is_dupl(t_stack *stack, int val)
+int			ft_is_dupl(t_stack *stack, int val)
 {
 	while (stack)
 	{
@@ -23,10 +23,10 @@ int ft_is_dupl(t_stack *stack, int val)
 	return (1);
 }
 
-void ft_print_stack(t_stacks *stacks)
+void		ft_print_stack(t_stacks *stacks)
 {
-	t_stack *a;
-	t_stack *b;
+	t_stack	*a;
+	t_stack	*b;
 
 	a = stacks->a;
 	b = stacks->b;
@@ -48,9 +48,9 @@ void ft_print_stack(t_stacks *stacks)
 	ft_putchar('\n');
 }
 
-int ft_get_count_list(t_stack *stack)
+int			ft_get_count_list(t_stack *stack)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	while (stack && ++count)
@@ -58,10 +58,10 @@ int ft_get_count_list(t_stack *stack)
 	return (count);
 }
 
-static int ft_cmd_instr(char *instr, t_stacks *stacks)
+static int	ft_cmd_instr(char *instr, t_stacks *stacks)
 {
-	int len;
-	int res;
+	int	len;
+	int	res;
 
 	len = ft_strlen(instr);
 	res = 0;
@@ -84,9 +84,9 @@ static int ft_cmd_instr(char *instr, t_stacks *stacks)
 	return (res == 0 ? 0 : 1);
 }
 
-void ft_cmd_instr_cnt(char *instr, int count, t_stacks *stacks)
+void		ft_cmd_instr_cnt(char *instr, int count, t_stacks *stacks)
 {
-	int i;
+	int	i;
 
 	i = ft_abs(count);
 	while (i--)

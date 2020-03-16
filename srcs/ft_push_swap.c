@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_push_swap.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wvenita <wvenita@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: wvenita <wvenita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/01 21:59:50 by wvenita           #+#    #+#             */
-/*   Updated: 2020/03/15 22:51:13 by wvenita          ###   ########.fr       */
+/*   Updated: 2020/03/16 20:06:11 by wvenita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-static void ft_sort_three(t_stacks *stacks)
+static void	ft_sort_three(t_stacks *stacks)
 {
 	if (stacks->a->val > stacks->a->next->val &&
 		stacks->a->val < stacks->a->next->next->val)
@@ -21,7 +21,7 @@ static void ft_sort_three(t_stacks *stacks)
 		ft_cmd_instr_cnt("ra", 1, stacks);
 }
 
-static void ft_sort_five(t_stacks *stacks)
+static void	ft_sort_five(t_stacks *stacks)
 {
 	if (stacks->max_sort->sort < 3)
 	{
@@ -34,16 +34,16 @@ static void ft_sort_five(t_stacks *stacks)
 	ft_st_a_min_to_top(stacks);
 }
 
-static void ft_sort_other(t_stacks *stacks)
+static void	ft_sort_other(t_stacks *stacks)
 {
 	ft_st_a_to_b(stacks);
 	ft_st_b_to_a(stacks);
 	ft_st_a_min_to_top(stacks);
 }
 
-int main(int ac, char **av)
+int			main(int ac, char **av)
 {
-	t_stacks *stacks;
+	t_stacks	*stacks;
 
 	stacks = ft_create_stacks(ac, av);
 	if (stacks->a == NULL)
