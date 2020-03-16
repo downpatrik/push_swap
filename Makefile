@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: wvenita <wvenita@student.21-school.ru>     +#+  +:+       +#+         #
+#    By: wvenita <wvenita@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/01 13:13:59 by wvenita           #+#    #+#              #
-#    Updated: 2020/03/15 20:40:56 by wvenita          ###   ########.fr        #
+#    Updated: 2020/03/16 22:10:04 by wvenita          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,7 +71,7 @@ clean:
 	@make clean -C libft/
 
 fclean: clean
-	@/bin/rm -f $(PS_NAME) $(CHECK_NAME)
+	/bin/rm -f $(PS_NAME) $(CHECK_NAME)
 	@make fclean -C libft/
 
 re: fclean all

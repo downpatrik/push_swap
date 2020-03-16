@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_create_stack.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wvenita <wvenita@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: wvenita <wvenita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/01 14:44:33 by wvenita           #+#    #+#             */
-/*   Updated: 2020/03/15 21:05:11 by wvenita          ###   ########.fr       */
+/*   Updated: 2020/03/16 20:10:53 by wvenita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-static t_stack *ft_create_new_list(int val)
+static t_stack	*ft_create_new_list(int val)
 {
-	t_stack *new;
+	t_stack	*new;
 
 	if (!(new = (t_stack *)malloc(sizeof(t_stack))))
 		return (NULL);
@@ -25,9 +25,9 @@ static t_stack *ft_create_new_list(int val)
 	return (new);
 }
 
-static t_stack *ft_stack_push_back_int(t_stack **stack, int val)
+static t_stack	*ft_stack_push_back_int(t_stack **stack, int val)
 {
-	t_stack *new;
+	t_stack	*new;
 
 	if ((new = ft_create_new_list(val)) == NULL)
 		return (NULL);
@@ -35,10 +35,10 @@ static t_stack *ft_stack_push_back_int(t_stack **stack, int val)
 	return (*stack);
 }
 
-static int ft_is_valid_int(int val, char *av)
+static int		ft_is_valid_int(int val, char *av)
 {
-	char *cur;
-	int res;
+	char	*cur;
+	int		res;
 
 	res = 0;
 	cur = ft_itoa(val);
@@ -49,10 +49,10 @@ static int ft_is_valid_int(int val, char *av)
 	return (res);
 }
 
-static void ft_create_stack_a(int ac, char **av, t_stacks *stacks)
+static void		ft_create_stack_a(int ac, char **av, t_stacks *stacks)
 {
-	int i;
-	int val;
+	int	i;
+	int	val;
 
 	av = ac == 2 ? ft_strsplit(av[1], ' ') : av;
 	i = ac == 2 ? 0 : 1;
@@ -75,9 +75,9 @@ static void ft_create_stack_a(int ac, char **av, t_stacks *stacks)
 	ft_free_array(ac == 2 ? av : NULL, 1);
 }
 
-t_stacks *ft_create_stacks(int ac, char **av)
+t_stacks		*ft_create_stacks(int ac, char **av)
 {
-	t_stacks *stacks;
+	t_stacks	*stacks;
 
 	if ((stacks = (t_stacks *)malloc(sizeof(t_stacks))) == NULL)
 		ft_put_error(&stacks, 1);

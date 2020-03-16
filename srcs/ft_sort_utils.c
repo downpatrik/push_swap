@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sort_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wvenita <wvenita@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: wvenita <wvenita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 13:21:44 by wvenita           #+#    #+#             */
-/*   Updated: 2020/03/15 20:27:31 by wvenita          ###   ########.fr       */
+/*   Updated: 2020/03/16 21:14:03 by wvenita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-void ft_set_index(t_stack *stack)
+void	ft_set_index(t_stack *stack)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (stack)
@@ -25,13 +25,13 @@ void ft_set_index(t_stack *stack)
 	}
 }
 
-t_stack *ft_get_max_sort(t_stack *stack)
+t_stack	*ft_get_max_sort(t_stack *stack)
 {
-	t_stack *tmp;
-	t_stack *first;
-	t_stack *max;
-	int count;
-	int i;
+	t_stack	*tmp;
+	t_stack	*first;
+	t_stack	*max;
+	int		count;
+	int		i;
 
 	first = stack;
 	max = stack;
@@ -43,7 +43,7 @@ t_stack *ft_get_max_sort(t_stack *stack)
 		while (i < count)
 		{
 			if ((tmp->next == NULL ? first : tmp->next)->val < tmp->val)
-				break;
+				break ;
 			stack->sort++;
 			i++;
 			tmp = tmp->next == NULL ? first : tmp->next;
@@ -54,29 +54,30 @@ t_stack *ft_get_max_sort(t_stack *stack)
 	return (max);
 }
 
-int ft_list_iter_to_up(int stack_len, int list_i)
+int		ft_list_iter_to_up(int stack_len, int list_i)
 {
 	return (stack_len / 2 >= list_i ? list_i : (stack_len - list_i) * -1);
 }
 
-int ft_get_list_place_i(t_stack *stack, int list_val)
+int		ft_get_list_place_i(t_stack *stack, int list_val)
 {
-	t_stack *optim;
-	int last_min;
+	t_stack	*optim;
+	int		last_min;
 
 	optim = NULL;
 	last_min = 0;
 	while (stack)
 	{
 		if ((last_min == 0) ||
-			(last_min < 0 && stack->val - list_val < 0 && stack->val - list_val > last_min) ||
+			(last_min < 0 && stack->val - list_val < 0 &&
+			stack->val - list_val > last_min) ||
 			(last_min > 0 && stack->val - list_val < last_min))
 		{
 			last_min = stack->val - list_val;
 			optim = stack;
 		}
 		if (stack->next == NULL)
-			break;
+			break ;
 		stack = stack->next;
 	}
 	if (optim == stack && last_min < 0)
@@ -84,7 +85,7 @@ int ft_get_list_place_i(t_stack *stack, int list_val)
 	return (last_min < 0 ? optim->i + 1 : optim->i);
 }
 
-int ft_list_b_to_a_count(int a, int b, int place_b)
+int		ft_list_b_to_a_count(int a, int b, int place_b)
 {
 	if (a > 0 && b > 0 && place_b != -1)
 		return (a > b ? a : b);

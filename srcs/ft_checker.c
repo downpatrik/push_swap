@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_checker.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wvenita <wvenita@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: wvenita <wvenita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/01 13:15:14 by wvenita           #+#    #+#             */
-/*   Updated: 2020/03/15 21:25:15 by wvenita          ###   ########.fr       */
+/*   Updated: 2020/03/16 20:09:07 by wvenita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-static int ft_is_sort_stacks(t_stacks *stacks)
+static int	ft_is_sort_stacks(t_stacks *stacks)
 {
-	t_stack *a;
-	int tmp;
+	t_stack	*a;
+	int		tmp;
 
 	if (stacks->b != NULL)
 		return (0);
@@ -31,10 +31,10 @@ static int ft_is_sort_stacks(t_stacks *stacks)
 	return (1);
 }
 
-int main(int ac, char **av)
+int			main(int ac, char **av)
 {
-	t_stacks *stacks;
-	char *instr;
+	t_stacks	*stacks;
+	char		*instr;
 
 	stacks = ft_create_stacks(ac, av);
 	stacks->cmd_print = 0;

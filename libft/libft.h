@@ -6,7 +6,7 @@
 /*   By: wvenita <wvenita@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/07 12:37:49 by wvenita           #+#    #+#             */
-/*   Updated: 2019/04/16 23:25:56 by wvenita          ###   ########.fr       */
+/*   Updated: 2020/03/16 20:11:36 by wvenita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <fcntl.h>
 # include <fcntl.h>
 # define BUFF_SIZE 8
-
 
 # ifndef MIN
 #  define MIN(a, b) (((a)<(b))?(a):(b))
@@ -123,8 +122,8 @@ void					ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void					ft_lstadd(t_list **alst, t_list *new);
 void					ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list					*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
-int                     ft_free_array(char **array, int ret_val);
+int						ft_free_array(char **array, int ret_val);
 
-int                     get_next_line(const int fd, char **line);
+int						get_next_line(const int fd, char **line);
 
 #endif
