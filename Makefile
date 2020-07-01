@@ -3,75 +3,90 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: wvenita <wvenita@student.42.fr>            +#+  +:+       +#+         #
+#    By: wvenita <wvenita@student.21-school.ru>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/03/01 13:13:59 by wvenita           #+#    #+#              #
-#    Updated: 2020/03/16 22:10:04 by wvenita          ###   ########.fr        #
+#    Created: 2019/11/02 15:19:28 by wvenita           #+#    #+#              #
+#    Updated: 2020/06/19 01:21:33 by wvenita          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-LIB			= libft/libft.a
+CC		=	gcc
 
-HEADER_NAME = ft_push_swap.h
-PS_NAME		= push_swap
-CHECK_NAME	= checker
+NAMEPS	=	push_swap
+NAMECH	=	checker
 
-INC_DIR		= ./includes/
-INC_LIBFT	= ./libft/
-SRC_DIR		= ./srcs/
-OBJ_DIR		= ./obj/
+FLAGS	=	-Wall -Wextra -Werror
 
-SRC_NAME_PS	= ft_push_swap.c\
-				ft_create_stack.c\
-				ft_cmd.c\
-				ft_cmd_instr.c\
-				ft_cmd_swap.c\
-				ft_sort.c\
-				ft_sort_utils.c\
-				ft_clean.c\
+LIBDIR	=	libft
+LIBLINK	=	-L $(LIBDIR) -lft
+LIB		=	$(LIBDIR)/libft.a
 
-SRC_NAME_CH	= ft_checker.c\
-				ft_create_stack.c\
-				ft_cmd.c\
-				ft_cmd_instr.c\
-				ft_cmd_swap.c\
-				ft_sort.c\
-				ft_sort_utils.c\
-				ft_clean.c\
+SRCDIR	=	./src/
+OBJDIR	=	./tmp/
 
-HAEDER		= $(addprefix $(INC_DIR), $(HEADER_NAME))
-SRC_PS		= $(addprefix $(SRC_DIR), $(SRC_NAME_PS))
-SRC_CHEK	= $(addprefix $(SRC_DIR), $(SRC_NAME_CH))
-OBJ_PS		= $(addprefix $(OBJ_DIR), $(SRC_NAME_PS:.c=.o))
-OBJ_CHECK	= $(addprefix $(OBJ_DIR), $(SRC_NAME_CH:.c=.o))
+SRCNPS	=	push_swap.c\
+			ft_validation.c\
+			ft_actions.c\
+			ft_actions_2.c\
+			ft_actions_3.c\
+			ft_quick_sort.c\
+			ft_separation.c\
+			ft_initialization.c\
+			ft_sort_3_and_5.c \
+			ft_global_sort.c\
+			ft_finding_place.c
 
-CC			= gcc
-FLAGS		= -Wall -Wextra -Werror
-GCC_LIBFT	= -L ./libft -lft
+SRCNCH 	=	checker.c\
+			ft_validation.c\
+			ft_actions.c\
+			ft_actions_2.c\
+			ft_actions_3.c\
+			ft_quick_sort.c\
+			ft_separation.c\
+			ft_initialization.c
 
-all: $(PS_NAME) $(CHECK_NAME)
+SRCPS	=	$(addprefix $(SRCDIR), $(SRCNPS))
+SRCCH	=	$(addprefix $(SRCDIR), $(SRCNCH))
+OBJPS	=	$(addprefix $(OBJDIR), $(SRCNPS:.c=.o))
+OBJCH	=	$(addprefix $(OBJDIR), $(SRCNCH:.c=.o))
 
-$(PS_NAME): $(OBJ_DIR) $(OBJ_PS) $(LIB) $(HAEDER)
-	$(CC) $(GCC_LIBFT) $(addprefix -I , $(INC_DIR)) $(OBJ_PS) $(FLAGS) -o $(PS_NAME)
+HEADERN	=	push_swap.h
+HAEDER	=	$(addprefix $(INCDIR), $(HEADERN))
+INCDIR	=	./include/
+INCL	=	./libft/
 
-$(CHECK_NAME): $(OBJ_DIR) $(OBJ_CHECK) $(LIB) $(HAEDER)
-	$(CC) $(GCC_LIBFT) $(addprefix -I , $(INC_DIR)) $(OBJ_CHECK) $(FLAGS) -o $(CHECK_NAME)
+CLEAR       = "\033[K"
+EOC			= "\033[0;0m"
+GREEN		= "\033[0;32m"
+CR			= "\r"$(CLEAR)
 
-$(OBJ_DIR):
-	@mkdir -p obj
+all: $(LIB) $(NAMEPS) $(NAMECH)
+
+$(NAMEPS): $(OBJDIR) $(OBJPS) $(LIB) $(HEADER)
+		@$(CC) $(FLAGS) $(addprefix -I , $(INCDIR)) -o $@ $(OBJPS) $(LIBLINK)
+		-@printf $(CR)$(GREEN)"✓ $@ is created\n"$(EOC)
+
+$(NAMECH): $(OBJDIR) $(OBJCH) $(LIB) $(HEADER)
+		@$(CC) $(FLAGS) $(addprefix -I , $(INCDIR)) -o $@ $(OBJCH) $(LIBLINK)
+		-@printf $(CR)$(GREEN)"✓ $@ is created\n"$(EOC)
+
+$(OBJDIR):
+		@mkdir -p tmp
 
 $(LIB):
-	@make -C libft/
+		@make -C $(LIBDIR)
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c $(HAEDER)
-	$(CC) -c -I $(INC_DIR) -I $(INC_LIBFT) $(FLAGS) $< -o $@
+$(OBJDIR)%.o: $(SRCDIR)%.c $(HEADER)
+		@$(CC) -c -I $(INCDIR) -I $(INCL) $(FLAGS) $< -o $@
 
-clean: 
-	@/bin/rm -rf $(OBJ_DIR)
-	@make clean -C libft/
+clean:
+		@make -C $(LIBDIR) clean
+		@rm -rf $(OBJDIR)
 
 fclean: clean
-	/bin/rm -f $(PS_NAME) $(CHECK_NAME)
-	@make fclean -C libft/
+		@rm -f $(NAMECH) $(NAMEPS)
+		@make -C $(LIBDIR) fclean
 
 re: fclean all
+
+.PHONY: clean all re fclean

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wvenita <wvenita@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wvenita <wvenita@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 19:18:30 by wvenita           #+#    #+#             */
-/*   Updated: 2019/04/16 23:04:43 by wvenita          ###   ########.fr       */
+/*   Updated: 2020/06/19 02:11:22 by wvenita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		ft_strwordlen(char const *s, char c)
+static	int	ft_strwordlen(char const *s, char c)
 {
 	int		i;
 
@@ -22,7 +22,7 @@ static int		ft_strwordlen(char const *s, char c)
 	return (i);
 }
 
-static size_t	ft_wordcount(char const *s, char c)
+size_t		ft_wordcount(char const *s, char c)
 {
 	size_t	i;
 
@@ -43,7 +43,7 @@ static size_t	ft_wordcount(char const *s, char c)
 	return (i);
 }
 
-char			**ft_strsplit(char const *s, char c)
+char		**ft_strsplit(char const *s, char c)
 {
 	char	**mas;
 	int		i;

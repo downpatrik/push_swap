@@ -17,7 +17,7 @@
 # include <sys/types.h>
 # include <fcntl.h>
 # include <fcntl.h>
-# define BUFF_SIZE 8
+# define BUFF_SIZE 1
 
 # ifndef MIN
 #  define MIN(a, b) (((a)<(b))?(a):(b))
@@ -125,5 +125,7 @@ t_list					*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 int						ft_free_array(char **array, int ret_val);
 
 int						get_next_line(const int fd, char **line);
+void					ft_error(void);
+size_t					ft_wordcount(char const *s, char c);
 
 #endif

@@ -82,7 +82,8 @@ OBJ = \
 		ft_atof.o\
 		ft_strrev.o\
 		ft_free_array.o\
-		get_next_line.o
+		get_next_line.o\
+		ft_error.o
 
 all: $(NAME)
 
